@@ -1,0 +1,385 @@
+#!/usr/bin/env python3
+
+# askOllama - A command-line tool to batch process with Ollama models
+
+# It supports RAG (Retrieval-Augmented Generation) with various document types. 
+# It can read prompts and arguments from files or command line, and output results in various formats.
+# Requires: langchain, langchain_community, langchain_chroma, langchain_ollama
+# Usage: python askOllama.py [options] <prompt> [<arg>]
+
+# Copyright (c) 2025 Binary Systems, Inc.
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#     http://www.apache.org/licenses/LICENSE-2.0        
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.    
+
+
+import argparse
+import os
+import requests
+import json
+import csv
+import shutil
+from pathlib import Path
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.document_loaders import (
+    UnstructuredPDFLoader,
+    TextLoader,
+    UnstructuredHTMLLoader,
+    UnstructuredMarkdownLoader,
+    UnstructuredRTFLoader,
+    UnstructuredWordDocumentLoader,
+    UnstructuredPowerPointLoader,
+    UnstructuredExcelLoader
+)
+from langchain_chroma import Chroma
+from langchain_ollama import OllamaEmbeddings
+import sys
+import textwrap
+import tempfile
+import subprocess
+
+ASKOLLAMA_MAN = r"""
+.TH ASKOLLAMA 1 "August 2025" "User Commands"
+.SH NAME
+askOllama \- Command-line interface for batch querying Ollama models with RAG support
+.SH SYNOPSIS
+.B askOllama
+[\-o outfile] [\-p personafile] [\-\-rag RAGDIR] prompt [arg]
+.SH DESCRIPTION
+.B askOllama
+is a command-line tool for sending prompts and arguments to Ollama models and retrieving responses. It supports batch queries, persona files, retrieval-augmented generation (RAG) directories, and multiple output formats.
+
+.SH SUPPORTED FILETYPES
+.TP
+.B RAG context files:
+PDF (.pdf), text (.txt, .log, .py, .json), HTML (.html, .htm), Markdown (.md, .markdown), RTF (.rtf), Word (.doc, .docx), PowerPoint (.ppt, .pptx), Excel (.xls, .xlsx)
+.TP
+.B Prompt files:
+Text (.txt), JSONL (.jsonl), CSV (.csv), RTF (.rtf)
+.TP
+.B Argfiles:
+Text (.txt), JSONL (.jsonl), CSV (.csv), RTF (.rtf)
+.TP
+.B Outfiles:
+JSONL (.jsonl), CSV (.csv), RTF (.rtf), plain text (.txt)
+
+.SH OPTIONS
+.TP
+.BI \-o " outfile"
+Specify an output file for results. Supported formats: .jsonl, .csv, .rtf, or plain text. If omitted, results are printed to stdout.
+.TP
+.BI \-p " personafile"
+Specify a file containing a persona/system prompt to set for the model.
+.TP
+.BI \-\-rag " RAGDIR"
+Specify a directory or file to upload as context documents for retrieval-augmented generation.
+.TP
+.BI prompt
+A prompt string or a file containing prompts (one per line).
+.TP
+.BI arg
+An optional argument string or file containing arguments (one per line).
+.TP
+.BI -h
+Show usage/options summary.
+.TP
+.BI --help
+Show this help/man page.
+
+.SH ENVIRONMENT
+.TP
+.B OLLAMA_API_BASE
+Base URL for the Ollama API (default: http://localhost:11434).
+.TP
+.B OLLAMA_MODEL
+Model name for Ollama (default: llama2).
+
+.SH EXAMPLES
+.TP
+Query with a single prompt and print result to stdout:
+.B
+./askOllama "Who is president of the USA"
+.TP
+Query with prompts from a file and save results to JSONL:
+.B
+./askOllama -o out.jsonl prompts.txt
+.TP
+Query with persona and RAG context:
+.B
+./askOllama -p persona.txt --rag docs/ "Summarize the following" argfile.txt
+
+.SH AUTHOR
+Binary Systems, Inc.
+
+.SH SEE ALSO
+Ollama API
+"""
+
+def print_man_page():
+    import tempfile
+    import subprocess
+    import os
+    with tempfile.NamedTemporaryFile('w', delete=False, suffix='.man') as tmp:
+        tmp.write(ASKOLLAMA_MAN)
+        tmp_path = tmp.name
+    try:
+        # Use groff with utf8 and less -R to handle formatting correctly
+        subprocess.run(f'groff -man -Tutf8 "{tmp_path}" | less -R', shell=True)
+    finally:
+        os.remove(tmp_path)
+    sys.exit(0)
+
+def build_vector_db(paths, persist_dir="rag_db"):
+    """Build vector DB from multiple file types"""
+    # Remove existing DB to avoid permission issues
+    if Path(persist_dir).exists():
+        try:
+            shutil.rmtree(persist_dir)
+        except PermissionError:
+            print("Permission error: Please manually remove the rag_db directory")
+            return None
+    
+    # Initialize text splitter
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=1000,
+        chunk_overlap=200
+    )
+    
+    docs = []
+    for path in paths:
+        try:
+            suffix = path.suffix.lower()
+            if suffix == '.pdf':
+                loader = UnstructuredPDFLoader(str(path))
+            elif suffix in ['.txt', '.log', '.py', '.json']:
+                loader = TextLoader(str(path))
+            elif suffix in ['.html', '.htm']:
+                loader = UnstructuredHTMLLoader(str(path))
+            elif suffix == '.rtf':
+                loader = UnstructuredRTFLoader(str(path))
+            elif suffix in ['.md', '.markdown']:
+                loader = UnstructuredMarkdownLoader(str(path))
+            elif suffix in ['.doc', '.docx']:
+                loader = UnstructuredWordDocumentLoader(str(path))
+            elif suffix in ['.ppt', '.pptx']:
+                loader = UnstructuredPowerPointLoader(str(path))
+            elif suffix in ['.xls', '.xlsx']:
+                loader = UnstructuredExcelLoader(str(path))
+            else:
+                print(f"Skipping unsupported file type: {path}")
+                continue
+                
+            doc = loader.load()
+            docs.extend(text_splitter.split_documents(doc))
+        except Exception as e:
+            print(f"Error processing {path}: {e}")
+            continue
+
+    if not docs:
+        print("No documents were successfully loaded")
+        return None
+
+    try:
+        # embeddings = OllamaEmbeddings(model="llama3.2-vision:11b")
+        embeddings = OllamaEmbeddings(model="llama2")
+        # Create Chroma instance with settings
+        db = Chroma(
+            persist_directory=persist_dir,
+            embedding_function=embeddings
+        )
+        
+        # Add documents
+        if docs:
+            db.add_documents(documents=docs)
+        return db
+        
+    except Exception as e:
+        print(f"Error creating vector database: {e}")
+        return None
+
+def retrieve_context(db, query, k=4):
+    results = db.similarity_search(query, k=k)
+    return "\n\n".join([r.page_content for r in results])
+
+def print_usage():
+    print("""
+Usage: askOllama [options] <prompt> [<arg>]
+
+Options:
+  -o outfile        Specify output file (.jsonl, .csv, .rtf, or text)
+  -p personafile    Specify persona/system prompt file
+  --rag RAGDIR      Specify RAG context directory or file
+  -h                Show usage/options summary
+  --help            Show embedded man page
+  prompt            Prompt string or file
+  arg               Argument string or file
+""")
+    sys.exit(0)
+
+def main():
+    parser = argparse.ArgumentParser(description="askOllama", add_help=False)
+    parser.add_argument('-o', default=None, help="outfile")
+    parser.add_argument('-p', default=None, help="personafile")
+    parser.add_argument('--rag', default=None, help="RAGDIR")
+    parser.add_argument('-h', action='store_true', help="Show usage/options summary")
+    parser.add_argument('--help', action='store_true', help="Show embedded man page")
+    parser.add_argument('prompt', nargs='?', help="Command Prompt or promptfile")
+    parser.add_argument('arg', nargs='?', default=None, help="arguments or argfile")
+    args = parser.parse_args()
+
+    # -h shows usage/options, --help or no prompt shows the man page
+    if args.h:
+        print_usage()
+        return
+    if args.help or args.prompt is None:
+        print_man_page()
+        return
+
+    base_url = os.environ.get('OLLAMA_API_BASE', 'http://localhost:11434')
+    #     model = os.environ.get('OLLAMA_MODEL', 'llama3.2-vision:11b')
+    model = os.environ.get('OLLAMA_MODEL', 'llama2')
+    headers = {
+        'Content-Type': 'application/json',
+    }
+
+    # Load persona
+    system_prompt = ''
+    if args.p:
+        with open(args.p, 'r') as f:
+            system_prompt = f.read().strip()
+
+    # If RAG is requested, build or load the vector DB
+    db = None
+    if args.rag:
+        if system_prompt:
+            system_prompt += '\n\n'
+        system_prompt += 'Answer the question based solely on the context provided.'
+        rag_path = Path(args.rag)
+        if rag_path.is_dir():
+            files = list(rag_path.rglob('*.*'))
+        else:
+            files = [rag_path]
+        
+        if files:
+            db = build_vector_db(files)
+            if not db:
+                print("Failed to create vector database. Continuing without RAG...")
+
+    # Get prompts and args
+    prompts = []
+    if Path(args.prompt).exists():
+        prompts = read_file(args.prompt)
+    else:
+        prompts = [args.prompt]
+
+    args_list = []
+    if args.arg is None:
+        args_list = [None]
+    elif Path(args.arg).exists():
+        args_list = read_file(args.arg)
+    else:
+        args_list = [args.arg]
+
+    # Send requests
+    results = []
+    for prompt in prompts:
+        for arg in args_list:
+            if arg is None:
+                message = prompt
+            else:
+                message = f"{prompt}\n{arg}"
+            context = ""
+            if db:
+                context = retrieve_context(db, message)
+            user_content = f"Context:\n{context}\n\nQuestion:\n{message}" if context else message
+            payload = {
+                "model": model,
+                "messages": [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_content}
+                ],
+                "stream": False
+            }
+            response = requests.post(
+                f'{base_url}/api/chat',
+                headers=headers,
+                json=payload
+            )
+            if response.status_code != 200:
+                print("Failed to chat")
+                continue
+            data = response.json()
+            result = data.get('message', {}).get('content', '')
+            results.append(result)
+
+    # Output
+    if args.o is None:
+        for r in results:
+            print(r)
+    else:
+        outfile = Path(args.o)
+        suffix = outfile.suffix
+        if suffix == '.jsonl':
+            with open(outfile, 'w') as f:
+                for r in results:
+                    f.write(json.dumps({"result": r}) + '\n')
+        elif suffix == '.csv':
+            with open(outfile, 'w', newline='') as f:
+                writer = csv.writer(f)
+                for r in results:
+                    writer.writerow([r])
+        elif suffix == '.rtf':
+            # Simple text output for RTF
+            with open(outfile, 'w') as f:
+                f.write(r'{\rtf1\ansi\deff0 {\fonttbl {\f0 Courier;}}' + '\n')
+                for r in results:
+                    f.write(r.replace('\n', '\\par ') + '\\par \\par' + '\n')
+                f.write('}')
+        else:
+            with open(outfile, 'w') as f:
+                for r in results:
+                    f.write(r + '\n')
+
+def read_file(file_path):
+    path = Path(file_path)
+    suffix = path.suffix.lower()
+    content = []
+    if suffix == '.jsonl':
+        with open(path, 'r') as f:
+            for line in f:
+                if line.strip():
+                    try:
+                        data = json.loads(line)
+                        text = data.get('prompt') or data.get('text') or data.get('argument') or str(data)
+                        content.append(text)
+                    except json.JSONDecodeError:
+                        content.append(line.strip())
+    elif suffix == '.csv':
+        with open(path, 'r') as f:
+            reader = csv.reader(f)
+            for row in reader:
+                if row:
+                    content.append(row[0])
+    elif suffix == '.rtf':
+        with open(path, 'r') as f:
+            text = f.read()
+            # Crude RTF parsing: split by \par and remove RTF codes roughly
+            paragraphs = text.split('\\par')
+            for p in paragraphs:
+                p = p.strip().replace('\\', '').strip()  # Simple strip
+                if p:
+                    content.append(p)
+    else:
+        with open(path, 'r') as f:
+            content = [line.strip() for line in f if line.strip()]
+    return content
+
+if __name__ == '__main__':
+    main()
