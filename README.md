@@ -74,6 +74,7 @@ EXAMPLES
        > askOllama -o outfile.txt -p Grogu.txt --rag RAGDIR prompts.txt argfile.txt
 
 AUTHOR
-       Binary Systems, Inc.
+       Binary Systems, Inc.  
+       http://www.binary-systems.com
 
 
