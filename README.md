@@ -1,20 +1,18 @@
 # askOllama(1)                General Commands Manual               askOllama(1)
 
 ## NAME
-
-       askOllama  -  Command‐line  interface  for batch querying Ollama models
-       with RAG support
-
+<p>askOllama  -  Command‐line interface for batch querying Ollama models with RAG support</p>
+       
 ## SYNOPSIS
 
        askOllama [-o outfile] [-p personafile] [--rag RAGDIR] prompt [arg]
 
 ## DESCRIPTION
 
-       askOllama is a command‐line tool for sending prompts and  arguments  to
+<p>askOllama is a command‐line tool for sending prompts and  arguments  to
        Ollama models and retrieving responses. It supports batch queries, per‐
        sona  files, retrieval‐augmented generation (RAG) directories, and mul‐
-       tiple output formats.
+       tiple output formats.</p>
 
 ## SUPPORTED FILETYPES
 
@@ -33,16 +31,16 @@
               JSONL (.jsonl), CSV (.csv), RTF (.rtf), plain text (.txt)
 
 ## OPTIONS
-       -o outfile
+       -o outfile<br>
               Specify an output file for results. Supported  formats:  .jsonl,
               .csv,  .rtf,  or  plain text. If omitted, results are printed to
               stdout.
 
-       -p personafile
+       -p personafile<br>
               Specify a file containing a persona/system prompt to set for the
               model.
 
-       --rag RAGDIR
+       --rag RAGDIR<br>
               Specify a directory or file to upload as context  documents  for
               retrieval‐augmented generation.
 
@@ -56,32 +54,31 @@
        ‐‐help Show this help/man page.
 
 
-##ENVIRONMENT
+## ENVIRONMENT
 
-       OLLAMA_API_BASE
+       OLLAMA_API_BASE<br>
               Base URL for the Ollama API (default: http://localhost:11434).
 
-       OLLAMA_MODEL
+       OLLAMA_MODEL<br>
               Model name for Ollama (default: llama2).
 
 
 ## EXAMPLES
 
-       Query with a single prompt and print result to stdout:
+<p>Query with a single prompt and print result to stdout:</p>
 
        > askOllama "Who is the 47th president of the USA?"
 
-       Query with prompts from a file and save results to JSONL:
+<p>Query with prompts from a file and save results to JSONL:</p>
 
        > askOllama -o outfile.jsonl prompts.txt
 
-       Query with persona and RAG context:
+<p>Query with persona and RAG context:</p>
 
        > askOllama -o outfile.txt -p Grogu.txt --rag RAGDIR prompts.txt argfile.txt
 
 ## AUTHOR
-
-       Binary Systems, Inc.  
-       http://www.binary-systems.com
+<p>Binary Systems, Inc.  <br>
+http://www.binary-systems.com</p>
 
 
