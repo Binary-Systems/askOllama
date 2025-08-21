@@ -1,19 +1,23 @@
 # askOllama(1)                General Commands Manual               askOllama(1)
 
-##NAME
+## NAME
+
        askOllama  -  Command‐line  interface  for batch querying Ollama models
        with RAG support
 
-##SYNOPSIS
+## SYNOPSIS
+
        askOllama [-o outfile] [-p personafile] [--rag RAGDIR] prompt [arg]
 
-##DESCRIPTION
+## DESCRIPTION
+
        askOllama is a command‐line tool for sending prompts and  arguments  to
        Ollama models and retrieving responses. It supports batch queries, per‐
        sona  files, retrieval‐augmented generation (RAG) directories, and mul‐
        tiple output formats.
 
-##SUPPORTED FILETYPES
+## SUPPORTED FILETYPES
+
        RAG context files:
               PDF (.pdf), text (.txt, .log, .py, .json), HTML  (.html,  .htm),
               Markdown  (.md, .markdown), RTF (.rtf), Word (.doc, .docx), Pow‐
@@ -28,7 +32,7 @@
        Outfiles:
               JSONL (.jsonl), CSV (.csv), RTF (.rtf), plain text (.txt)
 
-##OPTIONS
+## OPTIONS
        -o outfile
               Specify an output file for results. Supported  formats:  .jsonl,
               .csv,  .rtf,  or  plain text. If omitted, results are printed to
@@ -53,6 +57,7 @@
 
 
 ##ENVIRONMENT
+
        OLLAMA_API_BASE
               Base URL for the Ollama API (default: http://localhost:11434).
 
@@ -60,7 +65,8 @@
               Model name for Ollama (default: llama2).
 
 
-##EXAMPLES
+## EXAMPLES
+
        Query with a single prompt and print result to stdout:
 
        > askOllama "Who is the 47th president of the USA?"
@@ -73,7 +79,8 @@
 
        > askOllama -o outfile.txt -p Grogu.txt --rag RAGDIR prompts.txt argfile.txt
 
-##AUTHOR
+## AUTHOR
+
        Binary Systems, Inc.  
        http://www.binary-systems.com
 
