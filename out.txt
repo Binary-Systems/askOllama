@@ -1,59 +1,155 @@
-The first president of Costa Rica was Jorge Toccles Arce, who served from 1824 to 1833.
-The first president of the United States was George Washington. He was inaugurated as the country's first president on April 30, 1789 and served two terms until March 4, 1797.
-The first president of Russia was Boris Yeltsin, who served from 1991 to 1999.
-The first president of China was Chiang Kai-shek, who served as the President of the Republic of China from 1928 to 1975.
-The first president of Canada was John A. Macdonald, who served as the first Prime Minister of Canada from 1867 to 1873 and again from 1878 to 1891. At that time, Canada did not have a separate presidential position, as it was a dominion within the British Empire. It wasn't until 1950 that Canada adopted a separate presidential system, with Roland Michener serving as the first Governor General of Canada from 1952 to 1959.
-The first president of Japan was Kenzo Nakamura, who served as the first Prime Minister of Japan from 1868 to 1871. Prior to this, Japan was ruled by the Tokugawa shogunate, which was a feudal regime that had been in power since 1603.
+Prompt: Who is the first president of each country?
+Arg: Costa Rica
 
-Here is a list of the first presidents or heads of state of some other countries:
+The first president of Costa Rica was Juan José Mora Fernández. He served as the head of state from November 1848 to March 1849 and again from May 1859 to August 1859.
+############
+Prompt: Who is the first president of each country?
+Arg: USA
 
-* United States: George Washington (1789-1797)
-* France: Louis XVI (1789-1792)
-* Russia: Alexander II (1855-1882)
-* China: Yuan Shi-kai (1912-1913)
-* Germany: Otto von Bismarck (1866-1871)
-* United Kingdom: Queen Victoria (1837-1901)
-* Italy: Victor Emmanuel II (1861-1878)
-* Australia: John Adrian Louis Hope, 7th Earl of Hopetoun (1901-1902)
-* Canada: Sir John A. Macdonald (1867-1873)
-* India: Lord Hardinge (1915-1921)
-* South Africa: Paul Kruger (1904-1910)
+The first President of the United States was:
 
-Note that some of these countries had interim or provisional leaders before the establishment of a permanent head of state, and the list may not be exhaustive.
+**George Washington (1789-1797)**
 
-The first president of Venezuela was José María Vargas, who served from 1837 to 1841.
+He was a military leader during the American Revolutionary War and was unanimously elected as the first President of the United States by the Electoral College in 1789. He served two terms and is widely regarded as one of the most influential figures in American history.
+
+Would you like to know about another country?
+############
+Prompt: Who is the first president of each country?
+Arg: Russia
+
+The first President of Russia was Boris Yeltsin, who served from June 12, 1990 to December 31, 1999. However, if you're asking about the first head of state after the dissolution of the Soviet Union, that would be Boris Yeltsin as well.
+
+But, if you'd like to know the first President in the modern sense (post-Soviet era), it's indeed Boris Yeltsin, who was elected as the President of the Russian Federation on June 12, 1990.
+############
+Prompt: Who is the first president of each country?
+Arg: China
+
+China has a complex and evolving system of government, but I'll provide some context.
+
+China is currently a one-party state with a Communist Party-led government. The country has had various leaders throughout its history, but here are a few key ones:
+
+* **Chairman Mao Zedong** (1949-1976): He was the founding father of the People's Republic of China and served as Chairman of the Communist Party from 1943 until his death in 1976.
+* **Deng Xiaoping** (1977-1992): Often referred to as "the architect of modern China," Deng implemented market-oriented economic reforms that transformed China into a major economic power.
+
+However, if you're looking for a president-like figure, the answer is:
+
+* None! In China's current system, there is no president in the classical sense. Instead, the country has had several leaders with varying titles and roles:
+	+ **Li Xiannian** (1983-1992): He was the last Chairman of the National People's Congress (NPC), which serves as China's legislature.
+	+ **Jiang Zemin** (1993-2003): He was General Secretary of the Communist Party of China from 1989 to 2002 and President of the PRC from 1993 to 2003, although his presidency was largely ceremonial.
+	+ **Hu Jintao** (2003-2013) and later **Xi Jinping** (2013-present): These leaders have held various titles, including General Secretary of the Communist Party and Chairman of the NPC.
+
+China's government structure is complex and has evolved over time. If you're interested in learning more, feel free to ask!
+############
+Prompt: Who is the first president of each country?
+Arg: Canada
+
+The first prime minister of Canada, not president (note: Canada is a constitutional monarchy with a parliamentary system and a monarch as head of state), was Sir John A. Macdonald. He served from 1867 to 1873.
+
+However, if you're interested in learning more about the Canadian confederation and its early leaders, here's some info:
+
+* The British North America Act (BNA Act) created the Dominion of Canada on July 1, 1867.
+* Sir John A. Macdonald was the first Prime Minister of Canada, serving from July 1, 1867, to November 5, 1873.
+
+Canada has had 23 prime ministers since its confederation, but only one monarch (Queen Elizabeth II and King Charles III as his successor).
+
+Let me know if you'd like more info on Canadian history!
+############
+Prompt: Who is the first president of each country?
+Arg: Japan
+
+Japan does not have a President. Japan is a constitutional monarchy, with a parliamentary democracy system. The head of state and government is the Emperor (currently Naruhito), but the actual governing power rests with the Prime Minister.
+
+However, if you're interested in knowing who was the first Prime Minister of Japan, it would be H. Itō Hirobumi (also known as Hirofumi Itō), who served from December 1885 to January 1888.
+############
+Prompt: Who is the first president of each country?
+Arg: Venezuala
+
+The first president of Venezuela was José Antonio Páez, who served as president from 1830 to 1835. However, if you're referring to the modern democratic era that began after the death of Simón Bolívar in 1830, the first president was actually:
+
+* Andrés Narváez (1831) - Although he didn't complete his term due to a coup.
+* José Antonio Páez (1835) - As I mentioned earlier, but only served for about two months.
+
+The longest-serving and most influential leader of Venezuela during its early years of independence was Simón Bolívar's right-hand man, however, the country had many presidents before the "first" modern president.
+############
+Prompt: What is the capital of each country?
+Arg: Costa Rica
+
 The capital of Costa Rica is San José.
-The capital of the United States of America is Washington, D.C. (District of Columbia).
+############
+Prompt: What is the capital of each country?
+Arg: USA
+
+The capital of the United States of America (USA) is **Washington, D.C.** (short for District of Columbia).
+############
+Prompt: What is the capital of each country?
+Arg: Russia
 
 The capital of Russia is Moscow.
-The capital of China is Beijing (北京).
+############
+Prompt: What is the capital of each country?
+Arg: China
+
+The capital of China is Beijing.
+############
+Prompt: What is the capital of each country?
+Arg: Canada
+
 The capital of Canada is Ottawa.
-The capital of Japan is Tokyo.
+############
+Prompt: What is the capital of each country?
+Arg: Japan
+
+The capital of Japan is:
+
+**Tokyo**
+
+Would you like to know the capitals of other countries?
+############
+Prompt: What is the capital of each country?
+Arg: Venezuala
 
 The capital of Venezuela is Caracas.
-The approximate population of Costa Rica is 5.07 million people, according to the World Bank's estimate for 2020.
+############
+Prompt: What is the approximate population of each country?
+Arg: Costa Rica
 
-The estimated population of the United States of America (USA) as of 2020 is approximately 331 million people.
+The approximate population of Costa Rica is 5.1 million people, as of 2020 estimates from the World Bank and United Nations.
+############
+Prompt: What is the approximate population of each country?
+Arg: USA
 
-According to the most recent estimates, the population of Russia is approximately 145 million people. Here are some approximate populations of other countries:
+The estimated population of the United States as of 2021 is approximately **331.9 million** people.
 
-* China: 1.4 billion
-* United States: 331 million
-* India: 1.37 billion
-* Indonesia: 272 million
-* Brazil: 212 million
-* Pakistan: 207 million
-* Nigeria: 206 million
-* Bangladesh: 164 million
-* Japan: 128 million
-* Germany: 83 million
-* UK: 67 million
-* France: 67 million
-* Italy: 60 million
+Please note that this number may have changed slightly since then due to various factors like births, deaths, and migration. However, I can provide you with more up-to-date estimates if needed!
 
-Note that these numbers are estimates and may vary depending on the source.
-The approximate population of China is 1.43 billion people, according to the World Bank's estimate for 2020.
-The approximate population of Canada is 37.7 million people, according to the World Bank's estimate for 2022.
+Next country?
+############
+Prompt: What is the approximate population of each country?
+Arg: Russia
 
-The approximate population of Japan is 126,950,000 people (as of January 1, 2023).
-The estimated population of Venezuela as of 2020 is around 31.5 million people.
+The estimated population of Russia as of 2021 is approximately **145.9 million** people.
+############
+Prompt: What is the approximate population of each country?
+Arg: China
+
+The approximate population of China as of 2021 is:
+
+**1.443 billion** (Source: World Bank and United Nations estimates)
+
+Note that this number may vary slightly depending on the source, but 1.4-1.5 billion is a commonly cited estimate for China's population.
+############
+Prompt: What is the approximate population of each country?
+Arg: Canada
+
+The approximate population of Canada is 38 million people.
+############
+Prompt: What is the approximate population of each country?
+Arg: Japan
+
+The approximate population of Japan is around 128 million people (2020 estimate).
+############
+Prompt: What is the approximate population of each country?
+Arg: Venezuala
+
+The approximate population of Venezuela as of 2021 is 28 million people.
+############

@@ -25,7 +25,7 @@ Environment variables (kept for compatibility):
   • OLLAMA_API_BASE (default http://localhost:11434)
   • OLLAMA_MODEL (default 'llama2', overridden by --llm if provided)
 
-Requires: langchain, langchain-community, langchain-chroma, langchain-ollama, unstructured, pypdf, openpyxl, python-docx, python-pptx, requests, chromadb
+Requires: langchain, langchain-community, langchain-chroma, langchain-ollama, unstructured, pypdf, openpyxl, python-docx, python-pptx, requests, chromadb, python-docx
 """
 
 import argparse
@@ -37,7 +37,8 @@ import shutil
 import logging
 import time
 from pathlib import Path
-from typing import List, Optional
+from typing import List, Optional, Tuple
+from itertools import cycle
 
 import requests
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -54,6 +55,16 @@ from langchain_community.document_loaders import (
 from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings
 
+try:
+    from docx import Document
+except ImportError:
+    Document = None
+
+try:
+    import openpyxl
+except ImportError:
+    openpyxl = None
+
 
 ASKOLLAMA_MAN = r"""
 .TH ASKOLLAMA 1 "August 2025" "User Commands"
@@ -61,7 +72,7 @@ ASKOLLAMA_MAN = r"""
 askOllama \- Command-line interface for batch querying Ollama models with optional RAG support
 .SH SYNOPSIS
 .B askOllama
-[\-o outfile] [\-p personafile] [\-\-rag RAGDIR] [\-\-llm MODEL] [\-\-verbose] prompt [arg]
+[\-o outfile] [\-p personafile] [\-\-rag RAGDIR] [\-\-llm MODEL] [\-\-verbose] [\-\-separator SEPARATOR] [\-\-merge] [\-\-farm FARM] prompt [arg]
 .SH DESCRIPTION
 .B askOllama
 is a command-line tool for sending prompts and arguments to Ollama models and retrieving responses.
@@ -94,9 +105,20 @@ attempt to download it via the Ollama HTTP API before running.
 Enable verbose logging (DEBUG level). Default logging is INFO.
 
 .TP
+.BR --separator " SEPARATOR"
+Specify a string to place after each result in text-style outputs (.txt, .rtf, .doc, .docx, .md, .html, .pages). Ignored for tabular formats (.csv, .xlsx, .numbers, .jsonl). Default: three newlines.
+
+.TP
+.BR --merge
+Include the prompt and argument before each result in the output.
+
+.TP
+.BR --farm " FARM"
+Specify additional Ollama servers for workload distribution: comma-separated URLs or a file with one URL per line. The default server (OLLAMA_API_BASE or localhost) is always included. If using a file, it can be dynamically updated during runtime.
+
+.TP
 .BR -o " OUTFILE"
-Write results to OUTFILE. Supported extensions: `.jsonl`, `.csv`, `.rtf`; anything else is treated as
-plain text.
+Write results to OUTFILE. Supported extensions: `.jsonl`, `.csv`, `.rtf`, `.txt`, `.md`, `.html`, `.doc`, `.docx`, `.pages`, `.xlsx`, `.numbers`.
 
 .SH ENVIRONMENT
 .TP
@@ -132,6 +154,9 @@ Options:
   --rag RAGDIR      RAG context directory or single file (index saved in .rag_db)
   --llm MODEL       Ollama model name (pulled if missing)
   --verbose         Verbose logging
+  --separator SEP   Separator string for text outputs (after each result)
+  --merge           Include prompt and arg before each result
+  --farm FARM       Additional Ollama servers: URLs or farmfile
   -h                Show concise usage
   --help            Show embedded man page
         """.strip()
@@ -237,8 +262,12 @@ def build_vector_db(rag_target: Path) -> Optional[Chroma]:
     chunks = splitter.split_documents(docs)
     logging.info(f"Created {len(chunks)} chunks for embedding.")
 
+    os.environ['ANONYMIZED_TELEMETRY'] = 'False'
     embeddings = OllamaEmbeddings(model="nomic-embed-text")
+
     vectordb = Chroma.from_documents(chunks, embeddings, persist_directory=str(persist_dir))
+    
+
     #vectordb.persist()
     logging.info(f"Vector DB stored at {persist_dir}")
     return vectordb
@@ -349,36 +378,104 @@ def read_file(file_path: str) -> List[str]:
     return content
 
 
-def write_results(outfile: Optional[str], results: List[str]) -> None:
-    if not outfile:
-        for r in results:
-            print(r)
+def append_result(outfile: Optional[str], prompt: str, arg: Optional[str], result: str, suf: str, merge: bool, separator: Optional[str]) -> None:
+    arg_str = arg if arg is not None else "None"
+
+    content = ""
+    if merge:
+        content += f"Prompt: {prompt}\nArg: {arg_str}\n\n"
+    content += result
+
+    sep = (separator + "\n") if separator is not None else "\n\n\n"
+
+    tabular_formats = ['.csv', '.jsonl', '.xlsx', '.numbers']
+    text_formats = ['.txt', '.md', '.html', '.rtf', '.doc', '.docx', '.pages']
+
+    is_tabular = suf in tabular_formats if outfile else False
+    is_text = not is_tabular
+
+    if outfile is None:
+        print(content)
+        print(sep)
         return
 
     out = Path(outfile)
-    suf = out.suffix.lower()
+    mode = 'a' if out.exists() else 'w'
+    is_new = not out.exists()
 
     if suf == '.jsonl':
-        with open(out, 'w', encoding='utf-8') as f:
-            for r in results:
-                f.write(json.dumps({"result": r}, ensure_ascii=False) + "\n")
-    elif suf == '.csv':
-        with open(out, 'w', encoding='utf-8', newline='') as f:
+        with open(out, mode, encoding='utf-8') as f:
+            entry = {"prompt": prompt, "arg": arg or "", "result": result} if merge else {"result": result}
+            json.dump(entry, f, ensure_ascii=False)
+            f.write("\n")
+
+    elif suf == '.csv' or suf == '.numbers':
+        with open(out, mode, encoding='utf-8', newline='') as f:
             w = csv.writer(f)
-            for r in results:
-                w.writerow([r])
+            if is_new:
+                header = ["prompt", "arg", "result"] if merge else ["result"]
+                w.writerow(header)
+            row = [prompt, arg or "", result] if merge else [result]
+            w.writerow(row)
+
+    elif suf == '.xlsx':
+        if openpyxl is None:
+            logging.error("openpyxl required for .xlsx support")
+            sys.exit(1)
+        wb = openpyxl.load_workbook(out) if out.exists() else openpyxl.Workbook()
+        ws = wb.active
+        if is_new:
+            header = ["prompt", "arg", "result"] if merge else ["result"]
+            ws.append(header)
+        row = [prompt, arg or "", result] if merge else [result]
+        ws.append(row)
+        wb.save(out)
+
     elif suf == '.rtf':
+        if is_new:
+            with open(out, 'w', encoding='utf-8') as f:
+                f.write(r'{\rtf1\ansi\deff0 {\fonttbl {\f0 Courier;}}' + "\n")
+                f.write("}")
+        with open(out, 'r', encoding='utf-8') as f:
+            rtf_content = f.read().rstrip('}')
+        safe_content = content.replace('\\', r'\\').replace('{', r'\{').replace('}', r'\}')
+        safe_sep = sep.replace('\\', r'\\').replace('{', r'\{').replace('}', r'\}')
+        new_rtf = rtf_content + safe_content.replace('\n', '\\par\n') + '\\par\n' + safe_sep.replace('\n', '\\par\n') + "}"
         with open(out, 'w', encoding='utf-8') as f:
-            f.write(r'{\rtf1\ansi\deff0 {\fonttbl {\f0 Courier;}}' + "\n")
-            for r in results:
-                # minimal escaping
-                safe = r.replace('\\', r'\\').replace('{', r'\{').replace('}', r'\}')
-                f.write(safe + r"\par\n")
-            f.write("}")
+            f.write(new_rtf)
+
+    elif suf in ['.doc', '.docx']:
+        if Document is None:
+            logging.error("python-docx required for .docx support")
+            sys.exit(1)
+        doc = Document(out) if out.exists() else Document()
+        lines = content.split('\n')
+        for line in lines:
+            if line.strip():
+                doc.add_paragraph(line)
+        doc.add_paragraph(sep)
+        doc.save(out)
+
+    elif suf == '.html':
+        if is_new:
+            with open(out, 'w', encoding='utf-8') as f:
+                f.write("<html><body>\n")
+                f.write("</body></html>")
+        with open(out, 'r', encoding='utf-8') as f:
+            html_content = f.read().rstrip('</body></html>')
+        html_content += "<p>" + content.replace('\n', '<br>') + "</p>\n"
+        html_content += "<p>" + sep.replace('\n', '<br>') + "</p>\n" if sep else "<br><br><br>\n"
+        html_content += "</body></html>"
+        with open(out, 'w', encoding='utf-8') as f:
+            f.write(html_content)
+
+    elif suf in ['.txt', '.md', '.pages']:
+        with open(out, mode, encoding='utf-8') as f:
+            f.write(content + "\n" + sep)
+
     else:
-        with open(out, 'w', encoding='utf-8') as f:
-            for r in results:
-                f.write(r + "\n")
+        with open(out, mode, encoding='utf-8') as f:
+            f.write(content + "\n" + sep)
 
 
 # -------- main --------
@@ -390,6 +487,9 @@ def main():
     parser.add_argument('--rag', default=None, help="RAGDIR or single file")
     parser.add_argument('--llm', default=None, help="Specify Ollama LLM to use (pulled if missing)")
     parser.add_argument('--verbose', action='store_true', help="Enable verbose (DEBUG) logging")
+    parser.add_argument('--separator', default=None, help="Separator string for text outputs")
+    parser.add_argument('--merge', action='store_true', help="Include prompt and arg in output")
+    parser.add_argument('--farm', default=None, help="Additional Ollama servers: URLs or farmfile")
     parser.add_argument('-h', action='store_true', help="Show usage/options summary")
     parser.add_argument('--help', action='store_true', help="Show embedded man page")
     parser.add_argument('prompt', nargs='?', help="Prompt string or promptfile path")
@@ -406,8 +506,37 @@ def main():
         print_man_page()
         return
 
+    os.environ['ANONYMIZED_TELEMETRY'] = 'False'
+
     base_url = os.environ.get('OLLAMA_API_BASE', 'http://localhost:11434')
     model = args.llm or os.environ.get('OLLAMA_MODEL', 'llama2')
+
+    farmfile = None
+    farm_urls = []
+    if args.farm:
+        farm_path = Path(args.farm)
+        if farm_path.exists():
+            farmfile = farm_path
+        else:
+            farm_urls = [u.strip() for u in args.farm.split(',') if u.strip()]
+
+    def get_servers():
+        if farmfile:
+            try:
+                urls = read_file(str(farmfile))
+            except Exception as e:
+                logging.warning(f"Failed to read farmfile {farmfile}: {e}")
+                urls = []
+            return [base_url] + [u for u in urls if u]
+        else:
+            return [base_url] + farm_urls
+
+    # Ensure models on initial servers
+    initial_servers = get_servers()
+    for s in initial_servers:
+        ensure_model_available(model, s)
+        if args.rag:
+            ensure_model_available('nomic-embed-text', s)
 
     # Persona
     system_prompt = ''
@@ -419,15 +548,14 @@ def main():
             logging.error(f"Failed to read persona file {args.p}: {e}")
             sys.exit(1)
 
-    # RAG
+    # RAG (using default base_url for embeddings)
     db = None
     if args.rag:
         if system_prompt:
             system_prompt += '\n\n'
         system_prompt += 'Answer the question based solely on the context provided.'
         rag_target = Path(args.rag)
-        # Ensure embedding model is available too
-        ensure_model_available('nomic-embed-text', base_url)
+        embeddings = OllamaEmbeddings(model="nomic-embed-text", base_url=base_url)
         db = build_vector_db(rag_target)
 
     # Inputs: prompts
@@ -450,17 +578,44 @@ def main():
             args_list = [args.arg]
     logging.info(f"Loaded {len(args_list)} argument value(s)")
 
-    # Ensure model available
-    ensure_model_available(model, base_url)
+    # Cartesian product
+    pairs: List[Tuple[str, Optional[str]]] = [(p, a) for p in prompts for a in args_list]
+    total = len(pairs)
+    if total == 0:
+        logging.error("No prompts or arguments to process.")
+        sys.exit(1)
+
+    # Resume setup
+    suf = Path(args.o).suffix.lower() if args.o else ''
+    resume_file = None
+    skip = 0
+    if args.o:
+        resume_file = Path(args.o).parent / f".{Path(args.o).name}.resume"
+        if not Path(args.o).exists() and resume_file.exists():
+            resume_file.unlink()
+            logging.info(f"Output file does not exist; deleted existing resume file {resume_file}")
+        if resume_file.exists():
+            try:
+                with open(resume_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                    skip = data.get('processed', 0)
+            except Exception as e:
+                logging.warning(f"Failed to load resume file {resume_file}: {e}")
+                skip = 0
+        logging.info(f"Resuming from {skip} processed entries")
+    else:
+        logging.info("Output to stdout; no resume support.")
 
     headers = { 'Content-Type': 'application/json' }
 
-    results: List[str] = []
-    total = 0
+    processed = skip
+    try:
+        for idx in range(total):
+            if idx < skip:
+                continue
 
-    for prompt_text in prompts:
-        for arg_text in args_list:
-            total += 1
+            prompt_text, arg_text = pairs[idx]
+
             if arg_text is None:
                 message = prompt_text
             else:
@@ -478,6 +633,11 @@ def main():
             else:
                 user_content = message
 
+            arg_log = arg_text if arg_text is not None else "None"
+            logging.info(f"Querying model ({model}) [{processed+1}/{total}]:")
+            logging.info(f"Prompt: {prompt_text}")
+            logging.info(f"Arg: {arg_log}")
+
             payload = {
                 "model": model,
                 "messages": [
@@ -487,23 +647,44 @@ def main():
                 "stream": False,
             }
 
-            logging.info(f"Querying model ({model}) [{total}]: prompt+arg pair")
-            try:
-                resp = requests.post(f"{base_url}/api/chat", headers=headers, json=payload, timeout=600)
-            except Exception as e:
-                logging.error(f"HTTP error talking to Ollama: {e}")
-                sys.exit(1)
+            servers = get_servers()
+            if not servers:
+                servers = [base_url]
+            server_cycle = cycle(servers)
+            success = False
+            for attempt in range(len(servers)):
+                current_url = next(server_cycle)
+                try:
+                    resp = requests.post(f"{current_url}/api/chat", headers=headers, json=payload, timeout=600)
+                    if resp.status_code == 200:
+                        data = resp.json()
+                        result = data.get('message', {}).get('content', '')
+                        success = True
+                        break
+                except Exception as e:
+                    logging.warning(f"Server {current_url} failed: {e}")
+                    continue
+            if not success:
+                logging.error(f"All servers failed for prompt: {prompt_text}")
+                continue
 
-            if resp.status_code != 200:
-                logging.error(f"Ollama returned status {resp.status_code}: {resp.text[:300]}")
-                sys.exit(1)
+            append_result(args.o, prompt_text, arg_text, result, suf, args.merge, args.separator)
+            processed += 1
+            if resume_file:
+                with open(resume_file, 'w', encoding='utf-8') as f:
+                    json.dump({"processed": processed}, f)
+    except KeyboardInterrupt:
+        logging.info("Interrupted by user. Resume file preserved for restart.")
+        sys.exit(0)
 
-            data = resp.json()
-            result = data.get('message', {}).get('content', '')
-            results.append(result)
+    if resume_file:
+        try:
+            resume_file.unlink()
+            logging.info(f"Completed successfully; removed resume file {resume_file}")
+        except Exception as e:
+            logging.warning(f"Failed to remove resume file {resume_file}: {e}")
 
-    logging.info(f"Completed {total} request(s). Writing output…")
-    write_results(args.o, results)
+    logging.info(f"Completed {processed} of {total} request(s).")
     logging.info("Done.")
 
 
