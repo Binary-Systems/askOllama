@@ -38,7 +38,6 @@ import logging
 import time
 from pathlib import Path
 from typing import List, Optional, Tuple
-from itertools import cycle
 
 import requests
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -72,7 +71,7 @@ ASKOLLAMA_MAN = r"""
 askOllama \- Command-line interface for batch querying Ollama models with optional RAG support
 .SH SYNOPSIS
 .B askOllama
-[\-o outfile] [\-p personafile] [\-\-rag RAGDIR] [\-\-llm MODEL] [\-\-verbose] [\-\-separator SEPARATOR] [\-\-merge] [\-\-farm FARM] prompt [arg]
+[\-o outfile] [\-p personafile] [\-\-rag RAGDIR] [\-\-llm MODEL] [\-\-verbose] [\-\-separator SEPARATOR] [\-\-merge] [\-\-farm FARM] [\-\-transpose] prompt [arg]
 .SH DESCRIPTION
 .B askOllama
 is a command-line tool for sending prompts and arguments to Ollama models and retrieving responses.
@@ -117,6 +116,10 @@ Include the prompt and argument before each result in the output.
 Specify additional Ollama servers for workload distribution: comma-separated URLs or a file with one URL per line. The default server (OLLAMA_API_BASE or localhost) is always included. If using a file, it can be dynamically updated during runtime.
 
 .TP
+.BR --transpose
+Transpose the Cartesian product order: process all prompts for each argument (arguments outer loop).
+
+.TP
 .BR -o " OUTFILE"
 Write results to OUTFILE. Supported extensions: `.jsonl`, `.csv`, `.rtf`, `.txt`, `.md`, `.html`, `.doc`, `.docx`, `.pages`, `.xlsx`, `.numbers`.
 
@@ -157,6 +160,7 @@ Options:
   --separator SEP   Separator string for text outputs (after each result)
   --merge           Include prompt and arg before each result
   --farm FARM       Additional Ollama servers: URLs or farmfile
+  --transpose       Transpose order (args outer)
   -h                Show concise usage
   --help            Show embedded man page
         """.strip()
@@ -261,6 +265,10 @@ def build_vector_db(rag_target: Path) -> Optional[Chroma]:
     splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
     chunks = splitter.split_documents(docs)
     logging.info(f"Created {len(chunks)} chunks for embedding.")
+
+    if not chunks:
+        logging.warning("No documents indexable for RAG. Exiting vector DB build.")
+        return None
 
     os.environ['ANONYMIZED_TELEMETRY'] = 'False'
     embeddings = OllamaEmbeddings(model="nomic-embed-text")
@@ -490,6 +498,7 @@ def main():
     parser.add_argument('--separator', default=None, help="Separator string for text outputs")
     parser.add_argument('--merge', action='store_true', help="Include prompt and arg in output")
     parser.add_argument('--farm', default=None, help="Additional Ollama servers: URLs or farmfile")
+    parser.add_argument('--transpose', action='store_true', help="Transpose order (args outer)")
     parser.add_argument('-h', action='store_true', help="Show usage/options summary")
     parser.add_argument('--help', action='store_true', help="Show embedded man page")
     parser.add_argument('prompt', nargs='?', help="Prompt string or promptfile path")
@@ -579,7 +588,10 @@ def main():
     logging.info(f"Loaded {len(args_list)} argument value(s)")
 
     # Cartesian product
-    pairs: List[Tuple[str, Optional[str]]] = [(p, a) for p in prompts for a in args_list]
+    if args.transpose:
+        pairs: List[Tuple[str, Optional[str]]] = [(p, a) for a in args_list for p in prompts]
+    else:
+        pairs = [(p, a) for p in prompts for a in args_list]
     total = len(pairs)
     if total == 0:
         logging.error("No prompts or arguments to process.")
@@ -609,6 +621,7 @@ def main():
     headers = { 'Content-Type': 'application/json' }
 
     processed = skip
+    server_index = 0
     try:
         for idx in range(total):
             if idx < skip:
@@ -650,16 +663,20 @@ def main():
             servers = get_servers()
             if not servers:
                 servers = [base_url]
-            server_cycle = cycle(servers)
+            num_servers = len(servers)
             success = False
-            for attempt in range(len(servers)):
-                current_url = next(server_cycle)
+            for attempt in range(num_servers):
+                current_index = (server_index + attempt) % num_servers
+                current_url = servers[current_index]
                 try:
+                    logging.info(f"Querying model ({model}) on {current_url} [{processed+1}/{total}]:")
                     resp = requests.post(f"{current_url}/api/chat", headers=headers, json=payload, timeout=600)
                     if resp.status_code == 200:
                         data = resp.json()
                         result = data.get('message', {}).get('content', '')
+                        logging.info(f"Result: {result}")
                         success = True
+                        server_index = (current_index + 1) % num_servers  # advance to next
                         break
                 except Exception as e:
                     logging.warning(f"Server {current_url} failed: {e}")
