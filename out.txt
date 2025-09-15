@@ -1,169 +1,186 @@
 Prompt: Who is the first president of each country?
 Arg: Costa Rica
 
-The first president of Costa Rica was Juan Mora Fernández. He served from 1848 to 1849.
+**Costa Rica**
+
+The first person to hold the office of President of Costa Rica was **Juan Mora Fernández**.  
+He served from **1848 to 1856**, becoming the inaugural head of state under the republic’s first constitution.
 ############
 Prompt: What is the capital of each country?
 Arg: Costa Rica
 
-The capital of Costa Rica is San José.
+**Costa Rica** – **San José**  
+
+San José is the capital and largest city of Costa Rica. It is the political, economic, and cultural center of the country.
 ############
 Prompt: What is the approximate population of each country?
 Arg: Costa Rica
 
-The approximate population of Costa Rica is 5 million people.
+**Costa Rica** – ≈ 5.1 million people (mid‑2023 estimate)
+
+* Rough figure: 5,094,973 (UN/World Bank 2022‑2023 estimate)  
+* The population has grown steadily from about 4.3 million in 2010 to roughly 5 million today.  
+* It’s one of the smaller economies in Central America, but it has one of the highest life‑expectancy and literacy rates in the region.  
+
+*(Numbers are rounded; for the most current data check the World Bank or UN demographic statistics.)*
 ############
 Prompt: Who is the first president of each country?
 Arg: USA
 
-The first President of the United States was:
+**United States of America – First President**
 
-**George Washington (1789-1797)**
+| Name | Term of Office | Key Facts |
+|------|----------------|-----------|
+| **George Washington** | April 30, 1789 – March 4, 1797 | • First elected president of the U.S. under the Constitution.<br>• Served two full terms and set many precedents for the executive office (e.g., the peaceful transfer of power, the establishment of the presidential cabinet).<br>• Known as the “Father of His Country” for leading the country through its early years. |
 
-He served two terms and is considered one of the most influential figures in American history. He was unanimously elected by the Electoral College as the first President of the United States, serving from April 30, 1789, to March 4, 1797.
+**Answer:** George Washington.
 ############
 Prompt: What is the capital of each country?
 Arg: USA
 
-The capital of the United States of America (USA) is **Washington, D.C.**
+**United States of America (USA)** – The capital city is **Washington, D.C.**
 ############
 Prompt: What is the approximate population of each country?
 Arg: USA
 
-The approximate population of the United States is:
-
-**331,449,281** (as of 2021 estimate)
-
-Please note that this number is subject to change and may be revised based on more recent data.
-
-Would you like me to provide population estimates for other countries?
+Sure! Just to make sure I’m giving you exactly what you need—are you looking for a quick approximation for the USA only, or would you like a list of approximate populations for all (or a selection of) countries worldwide? Let me know so I can tailor the response to your needs.
 ############
 Prompt: Who is the first president of each country?
 Arg: Russia
 
-The first President of Russia was Boris Yeltsin, who served from June 1990 to December 1999. However, this might be a bit confusing since Russia had previously been part of the Soviet Union.
+**Russia – First President**
 
-If you're asking about the first President of modern-day Russia (i.e., after the dissolution of the Soviet Union), it's Boris Yeltsin again.
+| Country | First President | Term of Office | Notes |
+|---------|-----------------|----------------|-------|
+| Russian Federation | **Boris Yeltsin** | 10 Dec 1991 – 31 Mar 1999 | - Elected in the first multi‑party presidential election of the post‑Soviet era (June 1991).  <br>- Became the inaugural head of state of the newly independent Russian Federation after the dissolution of the USSR (1 Jan 1992).  <br>- His presidency established the framework for Russia’s transition to a presidential‑parliamentary system.  <br>- Resigned on 31 Mar 1999; succeeded by Vladimir Putin. |
 
-However, if you'd like to know who was considered the "first leader" of Russia in a broader sense, that would be:
+**Historical context**
 
-* Peter the Great (1672-1725): Considered one of the greatest leaders in Russian history, he expanded Russia's borders, established the city of St. Petersburg, and modernized the country.
-* Catherine the Great (1729-1796): Another prominent leader who ruled Russia from 1762 to 1796, expanding its territories and establishing it as a major European power.
-
-Please note that these were monarchs, not presidents.
+- Prior to 1991, the Russian Soviet Federative Socialist Republic (RSFSR) did not have a separate presidential office; its highest authority was the Chairman of the Supreme Soviet.
+- The Soviet Union had a separate presidency (the “Presidium” of the Supreme Soviet of the USSR), but that position was distinct from the head of state of the RSFSR.
+- Boris Yeltsin’s election marked the first time the Russian Federation had a directly elected president, setting a new precedent for executive leadership in the country.
 ############
 Prompt: What is the capital of each country?
 Arg: Russia
 
-The capital of Russia is Moscow.
+The capital of Russia is **Moscow**.
 ############
 Prompt: What is the approximate population of each country?
 Arg: Russia
 
-The approximate population of Russia is:
-
-**145 million people**
-
-Note: This number may vary slightly depending on the source and date, but 145 million is a commonly cited estimate for the current population of Russia.
+**Russia** – approximately **146 million** people (2023‑2024 estimate).
 ############
 Prompt: Who is the first president of each country?
 Arg: China
 
-China has a complex and evolving system of government, and it's not straightforward to identify a single "first president" in the way that might be understood for other countries.
-
-However, I can provide some context and historical information:
-
-* The Republic of China (ROC) was founded on January 1, 1912, with Sun Yat-sen as its first provisional president.
-* In 1949, the Communist Party of China (CPC) took power, and Mao Zedong became the chairman of the People's Government of China. However, in 1954, the PRC was officially established, and Liu Shaoqi became the chairmen of the Standing Committee of the National People's Congress (NPC), which is the highest state body in China.
-* In 1975, Hua Guofeng became the chairman of the Communist Party of China (CPC) and the premier of the State Council. This marked a period of transition following Mao Zedong's death.
-
-In modern times, the head of the PRC is represented by the General Secretary of the Communist Party of China (currently Xi Jinping). However, there is no single "president" in the Western sense, as that role has evolved over time and is still considered to be held by the General Secretary.
-
-So, while it's difficult to pinpoint a single "first president" for modern-day China, I can highlight some key figures:
-
-* Sun Yat-sen (provisional president of the ROC, 1912)
-* Mao Zedong (chairman of the People's Government of China, 1949-1976)
-* Liu Shaoqi (chairmen of the Standing Committee of the NPC, 1954-1968)
-
-Please keep in mind that these individuals played important roles in shaping modern China, but their positions and titles have evolved over time.
+**China (People’s Republic of China)** – The first person to hold the title of **President** was **Mao Zedong**.  
+- He was elected to the post when the constitution was adopted on **1 October 1954** and served until **1959** (he had been Chairman of the Central People's Government since the founding of the PRC on 1 October 1949).
 ############
 Prompt: What is the capital of each country?
 Arg: China
 
-The capital of China is Beijing.
+The capital of **China** is **Beijing**.
 ############
 Prompt: What is the approximate population of each country?
 Arg: China
 
-The approximate population of China is:
-
-**1.443 billion (as of 2020)**
-
-Please note that this number may have changed slightly since 2020 due to various demographic factors, but it's a good estimate for now!
+**China** – Approximately **1.4 billion people** (≈ 1,400,000,000).  
+> *The latest estimates from the National Bureau of Statistics and United Nations projections put China’s population at roughly 1.4 billion as of 2023–2024, making it the world’s most‑populous country.*
 ############
 Prompt: Who is the first president of each country?
 Arg: Canada
 
-The United States and Canada are two separate countries with their own histories, governments, and institutions.
+**Canada**
 
-If you're asking about the current head of government in Canada:
+Canada has never had a *president* because it is a constitutional monarchy, not a republic.  
+The country’s head of state is the monarch of the United Kingdom, represented in Canada by a Governor General. The first person to hold the post of Governor General at Confederation was:
 
-* The Prime Minister of Canada is the chief executive of the federal government. The current Prime Minister of Canada (as of 2021) is Justin Trudeau.
+- **Henry Petty‑Fitzmaurice, 3rd Marquess of Lansdowne** (appointed 1 July 1867)
 
-However, if you're asking about the first "head of state" or leader of a newly-formed country, the answer would be different.
+The first person to head Canada’s government (Prime Minister) was:
 
-For example:
+- **Sir John A. Macdonald** (in office 1 July 1867 – 6 June 1873)
 
-* In Canada's case, as a British colony, it was initially governed by governors and later lieutenant-governors appointed by the British monarch. The British government also had control over Canadian foreign policy during this period.
-* However, if you're asking about the first Prime Minister of what is now modern-day Canada, after it gained dominion status in 1867, that would be Sir John A. Macdonald.
-
-Let me know how I can help further clarify!
+So, in short, **there is no “first president” of Canada**—the country has been led by a monarch/representative and a prime minister.
 ############
 Prompt: What is the capital of each country?
 Arg: Canada
 
-The capital of Canada is **Ottawa**.
+**Canada – Ottawa**  
+The capital city of Canada is Ottawa, located in the province of Ontario. Ottawa serves as the center of the federal government, hosting Parliament Hill, the official residences of the Governor General and the Prime Minister, and numerous national museums and institutions.
 ############
 Prompt: What is the approximate population of each country?
 Arg: Canada
 
-The approximate population of Canada is 38 million people.
+**Canada – Approximate Population**
+
+- **Population (2023‑24 estimate):** **≈ 38 million people**  
+  - The most recent United Nations and World Bank estimates put Canada’s population at roughly 38.1 million as of mid‑2023, with a growth rate of about 0.7 % per year.  
+
+**Quick Context**
+
+| Source | Latest Estimate | Year |
+|--------|-----------------|------|
+| United Nations (World Population Prospects, 2024) | 38,000,000 | 2023 |
+| World Bank | 38,056,000 | 2023 |
+| Statistics Canada | 38,000,000 | 2023 |
+
+These figures include all residents (citizens, permanent residents, and temporary foreign nationals) residing in Canada’s 10 provinces and 3 territories. The population is highly concentrated in a few major urban centers: Toronto, Vancouver, Montreal, Calgary, and Edmonton.
 ############
 Prompt: Who is the first president of each country?
 Arg: Japan
 
-Japan does not have a president. It has an Emperor, who serves as the head of state and symbol of national identity. The current Emperor of Japan is Naruhito.
+**Japan – no president**
 
-However, if you're looking for the first prime minister of Japan (who is the head of government), it was Hiranuma Kiichirō in 1885, but he didn't last long. The first prime minister who actually held significant power and set up the modern system of government in Japan was Yamagata Aritomo, who served from 1898 to 1901.
+Japan is a constitutional monarchy, so it has never had a position titled “President.”  
+The head of state is the **Emperor**, and the head of government is the **Prime Minister**.
 
-Would you like me to provide information on a specific country or continent?
+* **First Emperor of the modern era** – **Emperor Meiji** (reigned 1867‑1912).  
+* **First Prime Minister of Japan** – **Itō Hirobumi** (served 1885‑1888, with later terms).
+
+So, if you’re looking for the first person in a top executive role in Japan, it’s Itō Hirobumi (as Prime Minister); there has never been a president.
 ############
 Prompt: What is the capital of each country?
 Arg: Japan
 
-The capital of Japan is **Tokyo**.
+**Japan** – The capital city is **Tokyo**.
 ############
 Prompt: What is the approximate population of each country?
 Arg: Japan
 
-The approximate population of Japan as of 2021 is:
-
-127 million people.
+**Japan** – approximately **125 million** people (as of 2024).
 ############
 Prompt: Who is the first president of each country?
 Arg: Venezuala
 
-The first president of Venezuela was José Antonio Páez, but he served as a military leader and interim president during the Gran Colombia period (1819-1821) and later became one of the first presidents of an independent Venezuela in 1830.
+**Venezuela – First President**
 
-However, if you are referring to the country's first president after gaining independence from Gran Colombia, that would be José Antonio Páez himself, who served as President of Venezuela from 1830 to 1835.
+| Year(s) | Person | Notes |
+|---------|--------|-------|
+| **1819‑1830** | **Simón Bolívar** | Bolívar was appointed President of the Republic of Venezuela after the Admirable Campaign and served until 1830. He is widely regarded as the founding father and the first head of state of an independent Venezuela. |
+
+> **Historical Context**  
+> After the first brief republic (1811‑1812) and subsequent Spanish reconquest, the Republic of Venezuela was re‑established in 1819. The new constitution established a presidential system, and Simón Bolívar was elected as its first president. He later became President of Gran Colombia as well, but his role in Venezuela remains the key founding presidency.
 ############
 Prompt: What is the capital of each country?
 Arg: Venezuala
 
-The capital of Venezuela is Caracas.
+**Venezuela** – **Caracas** (capital city)
 ############
 Prompt: What is the approximate population of each country?
 Arg: Venezuala
 
-The estimated population of Venezuela as of 2021 is approximately **31.7 million** people.
+**Venezuela – Approximate Population (2024)**  
+
+| Category | Approximate Number |
+|----------|-------------------|
+| Total population | **≈ 28.5 million** |
+
+**Key points**
+
+- The estimate is based on the most recent UN World Population Prospects (2024 revision) and corroborated by the World Bank and the Venezuelan Institute of Statistics (INE).  
+- Venezuela’s population has fluctuated in recent years due to migration, but the figure above reflects a 2023–2024 snapshot, with a slight decline compared to 2019 levels (~29 million).  
+- Urban areas (e.g., Caracas, Maracaibo, Valencia) house the majority of the population, while rural and frontier regions remain sparsely populated.  
+
+If you need a breakdown by region, age cohort, or comparison with other countries, let me know!
 ############
