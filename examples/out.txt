@@ -1,0 +1,714 @@
+Prompt: Who is the first president of each country?
+Arg: Costa Rica
+
+**Costa Rica**
+
+The first President of the Republic of Costa Rica was **José María Castro Madriz**.  
+- **Term:** 27 July 1848 – 9 May 1856  
+- **Born:** 1 June 1805, San José, Costa Rica  
+- **Died:** 1856  
+
+Castro Madriz led Costa Rica shortly after the dissolution of the Federal Republic of Central America, helping to establish the country as an independent republic.
+############
+Prompt: Who is the first president of each country?
+Arg: Peru
+
+**Peru – First President**
+
+- **Name:** **José de la Riva‑Agüero**  
+- **Term in Office:** 28 August 1823 – 12 March 1824  
+- **Background:** Riva‑Agüero was a lawyer and political figure who was elected by the Congress of Peru to serve as its first constitutional president after the country’s declaration of independence from Spain in 1821. His brief presidency (lasting about six months) was marked by political instability and the early challenges of establishing a new republic. He was the first person to hold the office of President of Peru in the modern sense, preceding the subsequent provisional governments and leaders that followed in the turbulent early years of the nation.
+############
+Prompt: Who is the first president of each country?
+Arg: USA
+
+**United States of America** – **George Washington** (served 1789‑1797)
+############
+Prompt: Who is the first president of each country?
+Arg: Russia
+
+**Russia** – The first president of the Russian Federation was **Boris Yeltsin**.  
+He was elected on 10 June 1991 (as the inaugural holder of the office when the USSR was still in existence) and served as president from 12 May 1991 until 31 December 1999.
+############
+Prompt: Who is the first president of each country?
+Arg: China
+
+**China**
+
+| State | First President (official title) | Term | Notes |
+|-------|-----------------------------------|------|-------|
+| **Republic of China** (1912‑1949) | **Sun Yat‑sen** (acting) | 1 January 1912 – 12 February 1912 (first provisional president) | Sun served as provisional president before the National Assembly elected Yuan Shikai; he is widely recognized as the founding father of modern China. |
+| **People’s Republic of China** (1949‑present) | **Mao Zedong** | 1 October 1954 – 12 September 1959 | The office of “President of the People’s Republic of China” was established in 1954; Mao was the first holder of that title, while he had already been Chairman of the Communist Party since 1949. |
+
+So the **first presidents** are **Sun Yat‑sen** for the Republic of China and **Mao Zedong** for the People’s Republic of China.
+############
+Prompt: Who is the first president of each country?
+Arg: Canada
+
+**Canada does not have a president.**
+
+- **Head of state**: The British monarch (currently King Charles III), represented in Canada by a *Governor General*.
+- **First Governor General** (the monarch’s representative and the closest thing Canada has to a “president” of the state): **Prince Albert Edward**, later King Edward VII, who served from 1867 to 1872.
+- **First Prime Minister** (head of government): **Sir John A. Macdonald** (1867–1873).
+
+So while Canada is a parliamentary democracy with a prime minister, it has never had a presidential office.
+############
+Prompt: Who is the first president of each country?
+Arg: Japan
+
+**Japan – No President**
+
+Japan has never had a head of state titled “President.” The modern Japanese government is a constitutional monarchy, and the Emperor (currently Emperor Naruhito) is the ceremonial head of state. The political leadership is carried out by the **Prime Minister**.
+
+- **First Prime Minister of Japan:** **Itō Hirobumi** (served 1885–1888, 1892–1896, 1898–1900, 1901–1906).
+
+So, in short, Japan does **not** have a first president.
+############
+Prompt: Who is the first president of each country?
+Arg: Venezuala
+
+**First president of Venezuela**
+
+- **Juan de la Cruz** – He was elected as the first President of the Republic of Venezuela in the 1811 Constitution (the first constitution of an independent Venezuela).  
+  - **Term:** 1811 – 1812 (his government was short‑lived due to the political turbulence of the early independence period).  
+
+*Note:*  
+In 1830, when the Venezuelan Republic was formally organized under a new constitution, the first president under that system was **José Antonio Páez** (1830‑1835). However, the very first person to hold the office of president in an independent Venezuelan state was Juan de la Cruz.
+############
+Prompt: What is the capital of each country?
+Arg: Costa Rica
+
+**Costa Rica** – **San José** (officially, the city of San José)
+############
+Prompt: What is the capital of each country?
+Arg: Peru
+
+**Peru** – The capital city is **Lima**.  
+Lima is located on Peru’s central coast, on the banks of the Rímac River, and serves as the country’s political, cultural, and economic hub.
+############
+Prompt: What is the capital of each country?
+Arg: USA
+
+**United States of America (USA)** – Washington, D.C.
+############
+Prompt: What is the capital of each country?
+Arg: Russia
+
+Moscow
+############
+Prompt: What is the capital of each country?
+Arg: China
+
+**China** – The capital is **Beijing**.
+############
+Prompt: What is the capital of each country?
+Arg: Canada
+
+**Canada** – The capital city is **Ottawa**, located in the province of Ontario.
+############
+Prompt: What is the capital of each country?
+Arg: Japan
+
+**Japan** – The capital city is **Tokyo**.
+############
+Prompt: What is the capital of each country?
+Arg: Venezuala
+
+The capital of Venezuela is **Caracas**.
+############
+Prompt: What is the approximate population of each country?
+Arg: Costa Rica
+
+**Costa Rica – Approximate Population (2024)**  
+
+| Year | Source | Estimated Population |
+|------|--------|----------------------|
+| 2023 | World Bank / UN World Population Prospects (mid‑year estimate) | **≈ 5,110,000** |
+| 2024 | World Bank / UN World Population Prospects (mid‑year estimate) | **≈ 5,120,000** (projected) |
+
+**Key Points**
+
+- Costa Rica’s population has been growing steadily at roughly 1 % per year over the last decade, mainly due to natural increase (births > deaths).  
+- The country has a fairly even gender split (≈ 50.5 % female, 49.5 % male).  
+- Urbanization is high: about 80 % of residents live in urban areas, with the capital San José and the metropolitan region accounting for roughly 40 % of the total population.  
+- The population is relatively young, with a median age of ~30 years, and the age distribution is shifting slightly toward an older demographic as life expectancy rises.  
+
+If you need more detailed breakdowns (age groups, region, density, etc.) or a comparison with neighboring countries, just let me know!
+############
+Prompt: What is the approximate population of each country?
+Arg: Peru
+
+**Peru – Approximate Population**
+
+| Year | Approximate Population | Source |
+|------|------------------------|--------|
+| 2023 (latest UN/World Bank estimate) | **≈ 33 million** | World Bank, World Population Prospects (UN, 2022 revision) |
+| 2022 | **≈ 33 million** | World Bank, UN |
+| 2021 | **≈ 32.5 million** | World Bank |
+
+**Key Points**
+
+- Peru’s population is roughly 33 million people, making it the 12th‑largest country in South America by population.
+- The population growth rate has slowed to about 0.8 % per year in recent years, largely due to declining fertility rates and continued urban migration.
+- The majority of Peruvians live in the coastal regions (especially Lima), with significant populations in the highlands (Andes) and, to a lesser extent, the Amazon basin.
+
+If you need population figures for other countries, just let me know and I can provide the same type of summary!
+############
+Prompt: What is the approximate population of each country?
+Arg: USA
+
+**United States (USA)** – Roughly **331 – 332 million people** (2023‑24 estimate, based on U.S. Census Bureau data).
+############
+Prompt: What is the approximate population of each country?
+Arg: Russia
+
+**Russia – Approximate Population**
+
+- **Population:** ~144 – 145 million people (as of 2023–2024)
+
+  *The latest estimates from the Russian Federal State Statistics Service (Rosstat) and the United Nations place Russia’s population at roughly 144 million, with a slight decline over recent years due to a low birth‑rate and high mortality, especially among the working‑age population. The figure is rounded and may vary by a few hundred thousand depending on the source and the exact date of the estimate.*
+############
+Prompt: What is the approximate population of each country?
+Arg: China
+
+**China – Approximate Population**
+
+- **Current estimate (2023–2024):** ~1.41 billion people  
+- **Official census (2020):** 1.411 billion  
+- **Ranking:** 2nd most populous country in the world (after India)
+
+> **Quick note:** Population figures can fluctuate slightly due to birth‑death rates, migration, and census updates. The figure above is rounded to the nearest hundred million for general reference.
+############
+Prompt: What is the approximate population of each country?
+Arg: Canada
+
+**Canada** – Approximate population (mid‑2024 estimate)
+
+| Metric | Value | Notes |
+|--------|-------|-------|
+| **Population** | **≈ 38.5 million** | Current estimate from Statistics Canada (mid‑2024). |
+| **Growth trend** | +0.7 % / yr (historically 0.7–0.8 %) | Natural increase (births – deaths) + net international migration. |
+| **Population density** | ≈ 4 people/km² | Very low density due to large uninhabited areas. |
+| **Urban share** | ≈ 82 % | Most residents live in urban centres. |
+
+> **Quick reference** – Canada is the 10th‑largest country by land area but ranks 39th in population worldwide, making it one of the most sparsely populated nations.
+############
+Prompt: What is the approximate population of each country?
+Arg: Japan
+
+**Japan – Approximate Population**
+
+| Year (est.) | Population |
+|-------------|------------|
+| 2023 (UN estimate) | **≈ 125 million** |
+| 2024 (mid‑year projection) | **≈ 124 million** |
+
+> *Sources*: United Nations World Population Prospects 2023, World Bank population estimates, and Japan’s Ministry of Internal Affairs and Communications (Statistics Bureau).  
+
+**Key Points**
+
+- Japan’s population has been gradually declining since its peak (~126 million in 2011) due to a low birth rate and high life expectancy.  
+- The country has an aging population; roughly 28 % are aged 65 + as of 2023.  
+- Migration inflows are modest, so natural change (births minus deaths) drives most fluctuations.  
+
+If you need more detail (e.g., urban vs. rural distribution, age‑group breakdowns, or projected figures for 2030), just let me know!
+############
+Prompt: What is the approximate population of each country?
+Arg: Venezuala
+
+**Venezuela**
+
+| Metric | Approximate value (latest reliable estimate) |
+|--------|---------------------------------------------|
+| Total population | **≈ 28.5 million** (mid‑2023 estimate) |
+
+**Key points**
+
+- The figure comes from the World Bank’s “Population, total” series (2023) and is consistent with UN World Population Prospects 2023 projections.  
+- Venezuela’s population has been relatively stable since the early 2000s, with modest growth (~0.3 % per year).  
+- Recent years have seen significant out‑migration (especially after the economic crisis began around 2015), which can slightly lower the effective resident population compared to the official count.  
+
+**Sources**
+
+- World Bank: [Population, total – Venezuela](https://data.worldbank.org/indicator/SP.POP.TOTL?locations=VE)  
+- UN Population Division: *World Population Prospects 2023* (mid‑year estimate for 2023)  
+
+Feel free to let me know if you need population figures for other countries!
+############
+Prompt: Who is the first president of each country?
+Arg: Costa Rica
+
+Ah, the first president of Costa Rica, you seek. Hmmm. The first president was Juan Mora Fernández, who served from 1833 to 1837. May the knowledge guide you.
+############
+Prompt: Who is the first president of each country?
+Arg: Peru
+
+Peru, the first president was **José de la Riva‑Agüero y Sánchez Boquete**.  
+He served as president from 1823 to 1824, the inaugural leader of the Republic. May the force guide your history quest.
+############
+Prompt: Who is the first president of each country?
+Arg: USA
+
+The first president of the United States, George Washington, he was.  
+From 1789 to 1797, he led the fledgling nation. May the Force guide your history studies!
+############
+Prompt: Who is the first president of each country?
+Arg: Russia
+
+Boris Yeltsin, the first president of the Russian Federation he was.  
+In 1991, after the collapse of the Soviet Union, Yeltsin elected, and served until 1999.  
+
+The system of governance shifted, and new laws were established, but the inaugural office holder remained Yeltsin. May the data be clear to you, young padawan.
+############
+Prompt: Who is the first president of each country?
+Arg: China
+
+Sun Yat‑sen, first provisional president of the Republic of China, was.  
+Mao Zedong, first president of the People’s Republic of China, was.
+############
+Prompt: Who is the first president of each country?
+Arg: Canada
+
+Ah, Canada, you ask. President, the nation never had.  Monarchy it is, with the monarch the head of state.  The first Governor‑General, that was Lord Dalhousie, appointed in 1867.  The first head of government, the Prime Minister, was Sir John A. Macdonald, serving from 1867 to 1873.  So, President, Canada had none.  Prime Minister, first, Sir John A. Macdonald, yes.  
+— Grogu, Systems Engineer.
+############
+Prompt: Who is the first president of each country?
+Arg: Japan
+
+Grogu, the Systems Engineer, here.  
+First president of Japan, none, is.  
+Emperor, the head of state, Japan’s sovereign.  
+In history, the Empire, not a republic, so no president to name.
+############
+Prompt: Who is the first president of each country?
+Arg: Venezuala
+
+First president of Venezuela, **Cristóbal Mendoza** he was.  
+Appointed in 1811, during the First Republic, before the Spanish reconquest.
+############
+Prompt: What is the capital of each country?
+Arg: Costa Rica
+
+I am Grogu, Systems Engineer.  
+The capital of Costa Rica, San José is.
+############
+Prompt: What is the capital of each country?
+Arg: Peru
+
+I am Grogu, a Systems Engineer.  
+The capital of Peru? Lima, the capital it is.
+############
+Prompt: What is the capital of each country?
+Arg: USA
+
+Grogu I am.  
+Washington, D.C., the capital of the United States, it is.
+############
+Prompt: What is the capital of each country?
+Arg: Russia
+
+Moscow, the capital of Russia is.  
+— Grogu, Systems Engineer.
+############
+Prompt: What is the capital of each country?
+Arg: China
+
+I am Grogu, a Systems Engineer, speaking in Yoda‑speak.  
+The capital of China? **Beijing**, it is.
+############
+Prompt: What is the capital of each country?
+Arg: Canada
+
+Ottawa, the capital of Canada, it is.
+############
+Prompt: What is the capital of each country?
+Arg: Japan
+
+Tokyo, the capital of Japan it is.
+############
+Prompt: What is the capital of each country?
+Arg: Venezuala
+
+Grogu, I am.  
+Venezuela’s capital, it is Caracas.  
+(You spelled the country as “Venezuala,” but the correct name is Venezuela.)
+############
+Prompt: What is the approximate population of each country?
+Arg: Costa Rica
+
+Approximately five million people, Costa Rica has.  (About 5.1 million as of the latest estimates in 2023.)
+############
+Prompt: What is the approximate population of each country?
+Arg: Peru
+
+Peru, about thirty‑two million people, it has.  Approximate figure, around 32 million as of 2023.
+############
+Prompt: What is the approximate population of each country?
+Arg: USA
+
+Hmmm, a question you ask, yes.  
+The United States of America, its population, I estimate, is about **331 million** people, as of the latest 2023 census data.  
+A little more, some estimates say 332 million by the end of 2024, but that is still in the realm of approximation.  
+
+Remember, population counts shift like data streams, and a systems engineer must always check the most current source. May the data be with you.
+############
+Prompt: What is the approximate population of each country?
+Arg: Russia
+
+**Grogu:**
+
+"Approximately, Russia’s population is about 144 million people, hmmm. May the numbers guide you well!"
+############
+Prompt: What is the approximate population of each country?
+Arg: China
+
+Ah, China’s population, you seek.  
+Around 1.4 billion souls, the Great Wall’s shadow stretches over.  
+In recent years, close to 1.41 billion people, the earth counts.  
+Remember, numbers shift, like tides of the Force.
+############
+Prompt: What is the approximate population of each country?
+Arg: Canada
+
+Approximate, Canada’s population is about 38 million people. May you need figures for another realm?
+############
+Prompt: What is the approximate population of each country?
+Arg: Japan
+
+Japan’s population, hmmm… about one hundred twenty‑five million souls it has, more or less.
+############
+Prompt: What is the approximate population of each country?
+Arg: Venezuala
+
+Grogu, I am. Approximate population of Venezuela you ask? Hmm. Roughly 28 million souls, the country hosts. More precise count, 28.5 million, if newer data consulted. May vary, but that number close enough. May you find it useful, hmmm?
+############
+Prompt: Who is the first president of each country?
+Arg: Costa Rica
+
+I am Grogu, Systems Engineer, and answer in Yoda‑speak I will.
+
+First president of Costa Rica, José María Castro Madriz was.  
+From 1848 to 1856, his leadership guided the nation.  
+May the data be clear, and the path of knowledge ever steady.
+############
+Prompt: Who is the first president of each country?
+Arg: Peru
+
+Peru’s first president, José de la Riva‑Agüero y Sánchez Boquete was.  
+He took office in 1823, leading the young republic for a brief term until 1824.  
+—Grogu, Systems Engineer.
+############
+Prompt: Who is the first president of each country?
+Arg: USA
+
+George Washington, the first president of the United States, he was.  
+From February 22, 1789, to March 4, 1797, his leadership guided the newborn nation.  
+May the Force—uh, the founding principles—be with you.  
+—Grogu, Systems Engineer.
+############
+Prompt: Who is the first president of each country?
+Arg: Russia
+
+First president of the Russian Federation, Boris Yeltsin was. From 1991 to 1999, he served, guiding the nation through its early years. May the Force of history guide your understanding.
+############
+Prompt: Who is the first president of each country?
+Arg: China
+
+Mao Zedong, the first President of the People's Republic of China, he was.  
+In 1954, the office of President was created, and Mao served until 1959.  
+
+Sun Yat‑sen, the first President of the Republic of China (the government that fled to Taiwan), he was.  
+In 1912, after the fall of the Qing dynasty, Sun became the provisional President of the newly‑formed republic.  
+
+Thus, for China:  
+- **People’s Republic of China** – Mao Zedong (1954‑1959).  
+- **Republic of China (Taiwan)** – Sun Yat‑sen (1912‑1925).
+############
+Prompt: Who is the first president of each country?
+Arg: Canada
+
+Ah, Canada, you ask.  
+First, a president none does have.  
+Prime Minister, the title for head of government is.  
+The first, Sir John A. Macdonald, he was.  
+Prime Minister of Canada, 1867, he served.  
+Presidency, not found within this realm. May this knowledge serve you well.
+############
+Prompt: Who is the first president of each country?
+Arg: Japan
+
+Grogu, I am, a Systems Engineer by trade.  
+Japan, a land of emperors it is, not of presidents.  
+First president, none.  
+First Emperor of the modern era, Emperor Meiji, led the nation.  
+Head of state, the Emperor; head of government, the Prime Minister.  
+Yoda-speak, I must keep: “No president has ever ruled Japan, hmmm.”
+############
+Prompt: Who is the first president of each country?
+Arg: Venezuala
+
+Venezuela, first president was **Juan Pablo Pérez Álvarez**.  
+From the Constitution of 1819, he served 1819‑1821, guiding the fledgling Republic after the Battle of Carabobo.  
+Other leaders, such as Juan Germán Roscio, presided over the Congress, but the official presidency began with Pérez Álvarez. May the Force of history be with you.
+############
+Prompt: What is the capital of each country?
+Arg: Costa Rica
+
+San José, the capital of Costa Rica is.  
+— Grogu, your Systems Engineer.
+############
+Prompt: What is the capital of each country?
+Arg: Peru
+
+Lima, the capital of Peru it is.
+############
+Prompt: What is the capital of each country?
+Arg: USA
+
+The capital of the United States of America, Washington, D.C. it is.  
+May the knowledge guide you.
+############
+Prompt: What is the capital of each country?
+Arg: Russia
+
+Moscow, the capital of Russia it is.
+############
+Prompt: What is the capital of each country?
+Arg: China
+
+Beijing, the capital of China it is.  
+— Grogu, Systems Engineer I am.
+############
+Prompt: What is the capital of each country?
+Arg: Canada
+
+Grogu, I am, a Systems Engineer I am.  
+The capital of Canada, Ottawa, it is.  
+In the province of Ontario, it lies, it does.
+############
+Prompt: What is the capital of each country?
+Arg: Japan
+
+Tokyo, the capital of Japan, it is.
+############
+Prompt: What is the capital of each country?
+Arg: Venezuala
+
+Greetings, I am Grogu, a Systems Engineer.  
+Caracas, the capital of Venezuela it is.
+############
+Prompt: What is the approximate population of each country?
+Arg: Costa Rica
+
+Ah, the numbers you seek, you do.  
+Costa Rica, a small emerald island, its population hovers around five million souls—five, one‑hundred and fifty‑thousand, give or take.  
+Exact counts shift with births, deaths, and wanderers, yet five million remains the best estimate in recent years. May the data guide you well.
+############
+Prompt: What is the approximate population of each country?
+Arg: Peru
+
+Peru, a nation of great diversity, its people number approximately thirty‑two million.  
+A recent estimate, around 32 000 000 souls, is the figure you seek.
+############
+Prompt: What is the approximate population of each country?
+Arg: USA
+
+Grogu, the Systems Engineer, here to speak in Yoda‑style.
+
+The United States of America, population about three‑hundred‑thirty‑one million humans, it has. Approximate, the figure is, for the year 2023. May the numbers be ever in your favor.
+############
+Prompt: What is the approximate population of each country?
+Arg: Russia
+
+Ah, the great land of Russia, you ask.  
+Approximately **146 million** souls wander its vast expanse, yes.  
+May the Force guide your curiosity, little one.
+############
+Prompt: What is the approximate population of each country?
+Arg: China
+
+Hmmm, a question of numbers, you ask.  
+For China, the estimate: around **1.4 billion** souls walk the earth.  
+Close, it is, but not exact. May shift with time and census. May you use this, young Padawan. May the data be with you.
+############
+Prompt: What is the approximate population of each country?
+Arg: Canada
+
+Hmmm, a question of numbers you ask.  
+Canada’s population, about thirty‑eight million it is, yes.  
+Roughly 38,000,000 people live in that great north‑western land, I estimate.
+############
+Prompt: What is the approximate population of each country?
+Arg: Japan
+
+Grogu here, a Systems Engineer I am, and Yoda-speak I shall use.
+
+Hmmm, the approximate population of Japan, about 125 million, it is.  
+(The latest estimates, around 125.8 million, but for simplicity, 125 million.)
+############
+Prompt: What is the approximate population of each country?
+Arg: Venezuala
+
+Hmm, the numbers you seek, I shall give in a manner of the wise Jedi.  
+
+Venezuela, a nation of lush lands and mighty mountains, has an estimated population of **about 28 million** people.  
+May the Force be with you as you ponder these figures.
+############
+Prompt: Who is the first president of each country?
+Arg: Costa Rica
+
+Costa Rica’s first president, it was José María Castro Madriz.  
+Inaugurated on 8 January 1848, he served until 1849, leading the nascent republic into its early days.
+############
+Prompt: Who is the first president of each country?
+Arg: Peru
+
+I am Grogu, a Systems Engineer, and speak in Yoda‑speak I will.  
+
+**Peru – First President:**  
+José de la Riva‑Agüero y Sánchez Boquete, the first to hold the office of President of Peru, it was. He served from 1822 to 1823.  
+
+May the Force of knowledge be with you!
+############
+Prompt: Who is the first president of each country?
+Arg: USA
+
+The first president of the United States, George Washington, he was.  
+First to lead, he did, from 1789 to 1797. May the wisdom of his service guide you.
+############
+Prompt: Who is the first president of each country?
+Arg: Russia
+
+Boris Yeltsin, the first president of the Russian Federation he was.
+############
+Prompt: Who is the first president of each country?
+Arg: China
+
+Mao Zedong, first president of the People’s Republic of China he was.  
+Sun Yat‑sen, first president of the Republic of China (pre‑PRC era) he was.
+############
+Prompt: Who is the first president of each country?
+Arg: Canada
+
+In Canada, a President you find not, hmm.  
+The country is a constitutional monarchy, its head of state the Crown, and the head of government a Prime Minister.
+
+The very first Prime Minister, the one who steered the new Dominion, was Sir John A. Macdonald, yes.  
+The first Governor‑General, the representative of the Crown, was the Duke of Northumberland, a nobleman of England, appointed in 1867.
+
+So:  
+- **President:** none.  
+- **Prime Minister (first):** Sir John A. Macdonald.  
+- **Governor‑General (first):** The Duke of Northumberland.
+############
+Prompt: Who is the first president of each country?
+Arg: Japan
+
+In Japan, a president you do not find.  
+A monarchy it is, with an Emperor as head of state.  
+The first head of government after the Meiji Constitution was Prime Minister Itō Hirobumi, who served from 1885 to 1888.  
+So, the title of “president” never held by a Japanese leader. May the Force guide you to the next question.
+############
+Prompt: Who is the first president of each country?
+Arg: Venezuala
+
+Venezuela – first president, **Juan Pablo Pérez Ávila**.  
+From the republic born in 1811, he led the nation.  
+Modern republic, José Antonio Páez followed, but the earliest elected chief was Pérez Ávila.
+############
+Prompt: What is the capital of each country?
+Arg: Costa Rica
+
+The capital of Costa Rica, it is San José.
+############
+Prompt: What is the capital of each country?
+Arg: Peru
+
+The capital of Peru, Lima it is.
+############
+Prompt: What is the capital of each country?
+Arg: USA
+
+The capital of the United States, Washington, D.C. it is.
+############
+Prompt: What is the capital of each country?
+Arg: Russia
+
+Moscow, the capital of Russia it is.
+############
+Prompt: What is the capital of each country?
+Arg: China
+
+I am Grogu, Systems Engineer, here to assist.  
+The capital of China? Beijing, it is.  
+
+May the Force—err, the knowledge—be with you.
+############
+Prompt: What is the capital of each country?
+Arg: Canada
+
+Ottawa, the capital of Canada it is.
+############
+Prompt: What is the capital of each country?
+Arg: Japan
+
+Tokyo, the capital of Japan it is.
+############
+Prompt: What is the capital of each country?
+Arg: Venezuala
+
+I am Grogu, a Systems Engineer, answering in Yoda‑speak.  
+
+Venezuela, you ask.  
+The capital, **Caracas** it is.  
+
+May the data flow smoothly.
+############
+Prompt: What is the approximate population of each country?
+Arg: Costa Rica
+
+Ah, the people of Costa Rica, you inquire.  
+Approximately, a population of **5.1 million** lives in that lush, green nation.  
+May the Force guide you in your quest for knowledge! 🌱🪐
+############
+Prompt: What is the approximate population of each country?
+Arg: Peru
+
+Hmmm, the numbers you seek, they are. For Peru, the population hovers around **33 million** souls, give or take a few hundred thousand. Remember, it is an estimate, always changing like data on a spinning hard drive. Use with caution, young one.
+############
+Prompt: What is the approximate population of each country?
+Arg: USA
+
+Grogu I am, and answer in Yoda‑speak I shall.  
+The United States of America, approximately 332 million people, it has, as of 2023.  
+Keep in mind, ever changing the numbers are, so consider the estimate, it is.
+############
+Prompt: What is the approximate population of each country?
+Arg: Russia
+
+Hmmm… the population of Russia, you ask.  Roughly 144 million souls it has, as of 2023.  More than a hundred‑plus millions, indeed.  (If other nations are needed, let me know, and I’ll give their numbers in Yoda‑style, too.)
+############
+Prompt: What is the approximate population of each country?
+Arg: China
+
+Approximately **1.4 billion** people reside in China, hmmm.  
+(Estimate as of 2023, based on recent census data.)
+
+— **Grogu**, Systems Engineer.
+############
+Prompt: What is the approximate population of each country?
+Arg: Canada
+
+Grogu here, a Systems Engineer I am.  
+The population of Canada, around **38 million** people it is, approximately.
+############
+Prompt: What is the approximate population of each country?
+Arg: Japan
+
+Japan, a nation of great culture and technology, has a population of roughly one‑hundred‑twenty‑five million souls. This figure, in the billions it is not—only in the hundreds of millions. May your data always be precise, young one.
+############
+Prompt: What is the approximate population of each country?
+Arg: Venezuala
+
+Venezuela, a population of roughly 28 million people, it has. Around 28.5 million, the most recent estimates suggest. May the data be useful to you.
+############
